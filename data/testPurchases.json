@@ -11100,5 +11100,197 @@
     "_id": "69986e184a1003da24d3deee",
     "createdAt": "2026-02-20T14:22:16.902Z",
     "updatedAt": "2026-02-20T14:22:16.902Z"
+  },
+  {
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "sku": {
+      "_id": "6996f6d54a1003da24d3de0b",
+      "name": "Pokémon TCG: Spheal Appeal Card Sleeves (65 Sleeves)",
+      "sku": "10-10304-101",
+      "category": "Pokemon Cards"
+    },
+    "website": {
+      "name": "target",
+      "url": "https://www.target.com/p/pokemon-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves/-/A-10-10304-101",
+      "directProductUrl": "https://www.target.com/p/pokemon-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves/-/A-10-10304-101",
+      "searchUrl": "https://www.target.com/s?searchTerm=Pok%C3%A9mon%20TCG%3A%20Spheal%20Appeal%20Card%20Sleeves%20(65%20Sleeves)"
+    },
+    "status": "success",
+    "purchaseDetails": {
+      "price": 4.56,
+      "quantity": 1,
+      "total": 4.56,
+      "creditCardUsed": "VISA",
+      "automatedPurchase": true,
+      "purchaseReason": "Automated bot purchase - scraped price $4.56 within target $6 (in stock)",
+      "checkType": "quick"
+    },
+    "metadata": {
+      "priceHistory": [
+        {
+          "timestamp": "2026-02-20T14:28:12.910Z",
+          "price": 4.56,
+          "source": "target",
+          "dataSource": "scraped",
+          "realScraping": true,
+          "inStock": true
+        }
+      ],
+      "purchaseTrigger": "automated_bot",
+      "targetPrice": 6,
+      "maxPrice": 9,
+      "botVersion": "1.0",
+      "executionTime": "2026-02-20T14:28:12.910Z",
+      "directProductUrl": "https://www.target.com/p/pokemon-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves/-/A-10-10304-101",
+      "searchUrl": "https://www.target.com/s?searchTerm=Pok%C3%A9mon%20TCG%3A%20Spheal%20Appeal%20Card%20Sleeves%20(65%20Sleeves)",
+      "realScraping": true
+    },
+    "_id": "69986f7c4a1003da24d3deef",
+    "createdAt": "2026-02-20T14:28:12.910Z",
+    "updatedAt": "2026-02-20T14:28:12.910Z"
+  },
+  {
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "sku": {
+      "_id": "6996f6d54a1003da24d3de0b",
+      "name": "Pokémon TCG: Spheal Appeal Card Sleeves (65 Sleeves)",
+      "sku": "10-10304-101",
+      "category": "Pokemon Cards"
+    },
+    "website": {
+      "name": "walmart",
+      "url": "https://www.walmart.com/ip/pokemon-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves/10-10304-101",
+      "directProductUrl": "https://www.walmart.com/ip/pokemon-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves/10-10304-101",
+      "searchUrl": "https://www.walmart.com/search?q=Pok%C3%A9mon%20TCG%3A%20Spheal%20Appeal%20Card%20Sleeves%20(65%20Sleeves)"
+    },
+    "status": "success",
+    "purchaseDetails": {
+      "price": 4.84,
+      "quantity": 1,
+      "total": 4.84,
+      "creditCardUsed": "VISA",
+      "automatedPurchase": true,
+      "purchaseReason": "Automated bot purchase - scraped price $4.84 within target $6 (in stock)",
+      "checkType": "quick"
+    },
+    "metadata": {
+      "priceHistory": [
+        {
+          "timestamp": "2026-02-20T14:30:00.409Z",
+          "price": 4.84,
+          "source": "walmart",
+          "dataSource": "scraped",
+          "realScraping": true,
+          "inStock": true
+        }
+      ],
+      "purchaseTrigger": "automated_bot",
+      "targetPrice": 6,
+      "maxPrice": 9,
+      "botVersion": "1.0",
+      "executionTime": "2026-02-20T14:30:00.409Z",
+      "directProductUrl": "https://www.walmart.com/ip/pokemon-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves/10-10304-101",
+      "searchUrl": "https://www.walmart.com/search?q=Pok%C3%A9mon%20TCG%3A%20Spheal%20Appeal%20Card%20Sleeves%20(65%20Sleeves)",
+      "realScraping": true
+    },
+    "_id": "69986fe84a1003da24d3def0",
+    "createdAt": "2026-02-20T14:30:00.409Z",
+    "updatedAt": "2026-02-20T14:30:00.409Z"
+  },
+  {
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "sku": {
+      "_id": "6996f6d54a1003da24d3de0b",
+      "name": "Pokémon TCG: Spheal Appeal Card Sleeves (65 Sleeves)",
+      "sku": "10-10304-101",
+      "category": "Pokemon Cards"
+    },
+    "website": {
+      "name": "pokemoncenter",
+      "url": "https://www.pokemoncenter.com/product/10-10304-101-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves",
+      "directProductUrl": "https://www.pokemoncenter.com/product/10-10304-101-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves",
+      "searchUrl": "https://www.pokemoncenter.com/search?q=10-10304-101"
+    },
+    "status": "success",
+    "purchaseDetails": {
+      "price": 4.47,
+      "quantity": 1,
+      "total": 4.47,
+      "creditCardUsed": "VISA",
+      "automatedPurchase": true,
+      "purchaseReason": "Automated bot purchase - scraped price $4.47 within target $6 (in stock)",
+      "checkType": "deep"
+    },
+    "metadata": {
+      "priceHistory": [
+        {
+          "timestamp": "2026-02-20T14:30:28.857Z",
+          "price": 4.47,
+          "source": "pokemoncenter",
+          "dataSource": "scraped",
+          "realScraping": true,
+          "inStock": true
+        }
+      ],
+      "purchaseTrigger": "automated_bot",
+      "targetPrice": 6,
+      "maxPrice": 9,
+      "botVersion": "1.0",
+      "executionTime": "2026-02-20T14:30:28.857Z",
+      "directProductUrl": "https://www.pokemoncenter.com/product/10-10304-101-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves",
+      "searchUrl": "https://www.pokemoncenter.com/search?q=10-10304-101",
+      "realScraping": true
+    },
+    "_id": "699870044a1003da24d3def1",
+    "createdAt": "2026-02-20T14:30:28.857Z",
+    "updatedAt": "2026-02-20T14:30:28.857Z"
+  },
+  {
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "sku": {
+      "_id": "6996f6d54a1003da24d3de0b",
+      "name": "Pokémon TCG: Spheal Appeal Card Sleeves (65 Sleeves)",
+      "sku": "10-10304-101",
+      "category": "Pokemon Cards"
+    },
+    "website": {
+      "name": "target",
+      "url": "https://www.target.com/p/pokemon-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves/-/A-10-10304-101",
+      "directProductUrl": "https://www.target.com/p/pokemon-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves/-/A-10-10304-101",
+      "searchUrl": "https://www.target.com/s?searchTerm=Pok%C3%A9mon%20TCG%3A%20Spheal%20Appeal%20Card%20Sleeves%20(65%20Sleeves)"
+    },
+    "status": "success",
+    "purchaseDetails": {
+      "price": 5.49,
+      "quantity": 1,
+      "total": 5.49,
+      "creditCardUsed": "VISA",
+      "automatedPurchase": true,
+      "purchaseReason": "Automated bot purchase - scraped price $5.49 within target $6 (in stock)",
+      "checkType": "quick"
+    },
+    "metadata": {
+      "priceHistory": [
+        {
+          "timestamp": "2026-02-20T14:34:17.529Z",
+          "price": 5.49,
+          "source": "target",
+          "dataSource": "scraped",
+          "realScraping": true,
+          "inStock": true
+        }
+      ],
+      "purchaseTrigger": "automated_bot",
+      "targetPrice": 6,
+      "maxPrice": 9,
+      "botVersion": "1.0",
+      "executionTime": "2026-02-20T14:34:17.529Z",
+      "directProductUrl": "https://www.target.com/p/pokemon-pokmon-tcg-spheal-appeal-card-sleeves-65-sleeves/-/A-10-10304-101",
+      "searchUrl": "https://www.target.com/s?searchTerm=Pok%C3%A9mon%20TCG%3A%20Spheal%20Appeal%20Card%20Sleeves%20(65%20Sleeves)",
+      "realScraping": true
+    },
+    "_id": "699870e94a1003da24d3def2",
+    "createdAt": "2026-02-20T14:34:17.529Z",
+    "updatedAt": "2026-02-20T14:34:17.529Z"
   }
 ]
