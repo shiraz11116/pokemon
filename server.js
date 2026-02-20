@@ -31,10 +31,10 @@ const initializeTestData = () => {
   logger.info('✅ Test data initialized and loaded from files');
 };
 
-// Rate limiting
+// Rate limiting with safe defaults
 const limiter = rateLimit({
-  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW) * 60 * 1000,
-  max: parseInt(process.env.RATE_LIMIT_MAX),
+  windowMs: (parseInt(process.env.RATE_LIMIT_WINDOW) || 15) * 60 * 1000,
+  max: parseInt(process.env.RATE_LIMIT_MAX) || 100,
   message: 'Too many requests from this IP, please try again later.'
 });
 
@@ -103,25 +103,40 @@ const server = app.listen(PORT, () => {
   logger.info(`🏥 Health Check: http://localhost:${PORT}/api/health`);
 });
 
-// Initialize managers and automated bot
-const scraperManager = new ScraperManager();
-const purchaseManager = new PurchaseManager();
-const automatedBot = new AutomatedPurchaseBot();
+// Initialize managers and automated bot with error handling
+let scraperManager, purchaseManager, automatedBot;
 
-// Start automated bot in test mode
+try {
+  scraperManager = new ScraperManager();
+  purchaseManager = new PurchaseManager();
+  automatedBot = new AutomatedPurchaseBot();
+  logger.info('✅ Managers initialized successfully');
+} catch (error) {
+  logger.error('❌ Manager initialization failed:', error.message);
+}
+
+// Start automated bot in test mode (Railway safe)
 if (!process.env.MONGODB_URI || process.env.MONGODB_URI === 'mongodb://localhost:27017/pokemon-cards') {
-  setTimeout(async () => {
-    try {
-      await automatedBot.start();
-      logger.info('🤖 Automated Purchase Bot is now monitoring for deals!');
-      logger.info('⏰ Bot Schedule:');
-      logger.info('   • Quick checks: Every 2 minutes');
-      logger.info('   • Deep analysis: Every 10 minutes');
-      logger.info('   • Daily summary: Every 24 hours');
-    } catch (error) {
-      logger.error('Failed to start automated bot:', error);
-    }
-  }, 10000); // Start bot 10 seconds after server startup
+  if (automatedBot) {
+    setTimeout(async () => {
+      try {
+        // Only start bot if not in Railway production environment
+        if (process.env.NODE_ENV !== 'production' || process.env.AUTO_PURCHASE_ENABLED === 'true') {
+          await automatedBot.start();
+          logger.info('🤖 Automated Purchase Bot is now monitoring for deals!');
+          logger.info('⏰ Bot Schedule:');
+          logger.info('   • Quick checks: Every 2 minutes');
+          logger.info('   • Deep analysis: Every 10 minutes');
+          logger.info('   • Daily summary: Every 24 hours');
+        } else {
+          logger.info('🤖 Bot disabled in production environment');
+        }
+      } catch (error) {
+        logger.error('❌ Failed to start automated bot:', error.message);
+        logger.info('✅ Server continues running without automated bot');
+      }
+    }, 10000); // Start bot 10 seconds after server startup
+  }
 }
 
 // Graceful shutdown

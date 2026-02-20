@@ -1,0 +1,22 @@
+# Railway Configuration
+[build]
+  command = "npm install"
+
+[start]
+  command = "npm start"
+
+[env]
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
+  PUPPETEER_EXECUTABLE_PATH = "/usr/bin/google-chrome-stable"
+  
+[runtime]
+  node_version = "18.x"
+
+[service]
+  type = "web"
+  port = "$PORT"
+  
+[healthcheck]
+  path = "/api/health"
+  interval = "30s"
+  timeout = "10s"
