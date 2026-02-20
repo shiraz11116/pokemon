@@ -1,0 +1,36 @@
+# RAILWAY ENVIRONMENT VARIABLES
+# Copy these to Railway Dashboard > Variables tab
+
+NODE_ENV=production
+PORT=3001
+JWT_SECRET=pokemon-live-secret-2026-secure-key
+JWT_EXPIRE=30d
+
+# Email Configuration (Optional - for notifications)
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+EMAIL_FROM=Pokemon Card System <your-email@gmail.com>
+
+# Encryption Key for Credit Cards 
+ENCRYPTION_KEY=pokemon-live-encryption-256-bit-secure-2026
+
+# Rate Limiting
+RATE_LIMIT_WINDOW=15
+RATE_LIMIT_MAX=100
+
+# Scraping Configuration
+SCRAPER_DELAY_MIN=3000
+SCRAPER_DELAY_MAX=8000
+USER_AGENTS_ROTATION=true
+PROXY_ROTATION=false
+
+# Purchase Configuration
+AUTO_PURCHASE_ENABLED=true
+MAX_PURCHASE_AMOUNT=500
+PURCHASE_CONFIRMATION_REQUIRED=false
+
+# Notification Settings
+EMAIL_NOTIFICATIONS=false
+PURCHASE_SUCCESS_EMAIL=false
