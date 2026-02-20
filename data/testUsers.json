@@ -1,0 +1,45 @@
+[
+  {
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "$2a$12$qQxSqQ486nRqVAm4K1HoaOuNCm/epl2ivDiyOy4gV/ETs0dbVkuM6",
+    "role": "user",
+    "settings": {
+      "emailNotifications": true,
+      "purchaseAlerts": true,
+      "maxBudget": 500
+    },
+    "createdAt": "2026-02-12T14:53:25.516Z",
+    "_id": "698de9652d08a3b5f0dfebb0"
+  },
+  {
+    "username": "test",
+    "email": "test@pokemon.com",
+    "password": "$2a$12$qQxSqQ486nRqVAm4K1HoaOuNCm/epl2ivDiyOy4gV/ETs0dbVkuM6",
+    "role": "user",
+    "settings": {
+      "emailNotifications": true,
+      "purchaseAlerts": true,
+      "maxBudget": 1000
+    },
+    "profile": {
+      "firstName": "Test",
+      "lastName": "User",
+      "address": "123 Main St, City, State 12345"
+    },
+    "creditCards": [
+      {
+        "_id": "699abc123def456789012345",
+        "cardNumber": "4111111111111111",
+        "cardHolder": "Test User",
+        "expiryDate": "12/25",
+        "cvv": "123",
+        "cardType": "Visa",
+        "isDefault": true,
+        "createdAt": "2026-02-13T10:30:00.000Z"
+      }
+    ],
+    "createdAt": "2026-02-13T10:00:00.000Z",
+    "_id": "699abc123def456789012346"
+  }
+]

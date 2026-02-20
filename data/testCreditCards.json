@@ -1,0 +1,23 @@
+[
+  {
+    "cardName": "VISA",
+    "expiryMonth": "04",
+    "expiryYear": "2029",
+    "cardholderName": "Muhammad Shiraz",
+    "billingAddress": {
+      "street": "825 market street",
+      "city": "Allen",
+      "state": "TX",
+      "zipCode": "75301"
+    },
+    "isDefault": true,
+    "encryptedCardNumber": "****-****-****-1111",
+    "encryptedCVV": "***",
+    "cardType": "visa",
+    "isActive": true,
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "_id": "6994667f91d9868842476ae1",
+    "createdAt": "2026-02-17T13:00:47.348Z",
+    "updatedAt": "2026-02-17T13:00:49.345Z"
+  }
+]

@@ -1,0 +1,567 @@
+{
+  "info": {
+    "name": "Pokemon Card Auto-Purchase System API",
+    "description": "Complete API collection for testing the Pokemon card purchasing system",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001/api",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser\",\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const response = pm.response.json();",
+                  "    pm.environment.set('authToken', response.token);",
+                  "    pm.test('User registered successfully', () => {",
+                  "        pm.expect(response.status).to.eql('success');",
+                  "    });",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const response = pm.response.json();",
+                  "    pm.environment.set('authToken', response.token);",
+                  "    pm.test('Login successful', () => {",
+                  "        pm.expect(response.status).to.eql('success');",
+                  "    });",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "me"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pokemon Cards (SKUs)",
+      "item": [
+        {
+          "name": "Get All SKUs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skus",
+              "host": ["{{baseUrl}}"],
+              "path": ["skus"]
+            }
+          }
+        },
+        {
+          "name": "Create New SKU",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pokemon Booster Pack - Paldea Evolved\",\n  \"sku\": \"POKEMON-PE-BP-001\",\n  \"category\": \"booster-pack\",\n  \"targetPrice\": 3.99,\n  \"maxPrice\": 5.99,\n  \"priority\": \"high\",\n  \"websites\": [\n    {\n      \"name\": \"target\",\n      \"url\": \"https://www.target.com/p/pokemon-cards-example\",\n      \"selector\": {\n        \"price\": \"[data-test=\\\"product-price\\\"]\",\n        \"availability\": \"[data-test=\\\"fulfillment-add-to-cart\\\"]\",\n        \"addToCart\": \"[data-test=\\\"shipItButton\\\"]\"\n      },\n      \"isActive\": true\n    },\n    {\n      \"name\": \"pokemoncenter\",\n      \"url\": \"https://www.pokemoncenter.com/product/example\",\n      \"selector\": {\n        \"price\": \".price\",\n        \"availability\": \".add-to-cart\",\n        \"addToCart\": \".add-to-cart\"\n      },\n      \"isActive\": true\n    }\n  ],\n  \"purchaseSettings\": {\n    \"maxQuantity\": 2,\n    \"autoPurchase\": true,\n    \"requireConfirmation\": false\n  },\n  \"metadata\": {\n    \"set\": \"Paldea Evolved\",\n    \"series\": \"Scarlet & Violet\",\n    \"rarity\": \"Common\",\n    \"language\": \"English\",\n    \"condition\": \"New\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/skus",
+              "host": ["{{baseUrl}}"],
+              "path": ["skus"]
+            }
+          }
+        },
+        {
+          "name": "Get Single SKU",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skus/{{skuId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["skus", "{{skuId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update SKU",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targetPrice\": 3.49,\n  \"priority\": \"medium\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/skus/{{skuId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["skus", "{{skuId}}"]
+            }
+          }
+        },
+        {
+          "name": "Toggle SKU Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skus/{{skuId}}/toggle-status",
+              "host": ["{{baseUrl}}"],
+              "path": ["skus", "{{skuId}}", "toggle-status"]
+            }
+          }
+        },
+        {
+          "name": "Delete SKU",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skus/{{skuId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["skus", "{{skuId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Purchases",
+      "item": [
+        {
+          "name": "Get All Purchases",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/purchases",
+              "host": ["{{baseUrl}}"],
+              "path": ["purchases"]
+            }
+          }
+        },
+        {
+          "name": "Get Purchase by Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/purchases?status=success",
+              "host": ["{{baseUrl}}"],
+              "path": ["purchases"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "success"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Purchase",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/purchases/{{purchaseId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["purchases", "{{purchaseId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Purchase Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/purchases/stats/summary",
+              "host": ["{{baseUrl}}"],
+              "path": ["purchases", "stats", "summary"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Purchase",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/purchases/{{purchaseId}}/cancel",
+              "host": ["{{baseUrl}}"],
+              "path": ["purchases", "{{purchaseId}}", "cancel"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Credit Cards",
+      "item": [
+        {
+          "name": "Get All Cards",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cards",
+              "host": ["{{baseUrl}}"],
+              "path": ["cards"]
+            }
+          }
+        },
+        {
+          "name": "Add Credit Card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cardName\": \"Main Credit Card\",\n  \"cardNumber\": \"4111111111111111\",\n  \"cvv\": \"123\",\n  \"expiryMonth\": \"12\",\n  \"expiryYear\": \"2028\",\n  \"cardholderName\": \"John Doe\",\n  \"billingAddress\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"New York\",\n    \"state\": \"NY\",\n    \"zipCode\": \"10001\",\n    \"country\": \"US\"\n  },\n  \"websites\": [\"target\", \"pokemoncenter\", \"bestbuy\"],\n  \"isDefault\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cards",
+              "host": ["{{baseUrl}}"],
+              "path": ["cards"]
+            }
+          }
+        },
+        {
+          "name": "Get Single Card",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cards/{{cardId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["cards", "{{cardId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Card",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cardName\": \"Updated Card Name\",\n  \"websites\": [\"target\", \"bestbuy\"]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cards/{{cardId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["cards", "{{cardId}}"]
+            }
+          }
+        },
+        {
+          "name": "Set Default Card",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cards/{{cardId}}/set-default",
+              "host": ["{{baseUrl}}"],
+              "path": ["cards", "{{cardId}}", "set-default"]
+            }
+          }
+        },
+        {
+          "name": "Delete Card",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cards/{{cardId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["cards", "{{cardId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scrapers",
+      "item": [
+        {
+          "name": "Get Scraper Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/scrapers/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["scrapers", "status"]
+            }
+          }
+        },
+        {
+          "name": "Get Scraping Results",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/scrapers/results?skuId={{skuId}}&website=target",
+              "host": ["{{baseUrl}}"],
+              "path": ["scrapers", "results"],
+              "query": [
+                {
+                  "key": "skuId",
+                  "value": "{{skuId}}"
+                },
+                {
+                  "key": "website",
+                  "value": "target"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Manual Scrape (Admin Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"skuId\": \"{{skuId}}\",\n  \"website\": \"target\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/scrapers/manual-scrape",
+              "host": ["{{baseUrl}}"],
+              "path": ["scrapers", "manual-scrape"]
+            }
+          }
+        },
+        {
+          "name": "Control Scrapers (Admin Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{authToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/scrapers/control/start",
+              "host": ["{{baseUrl}}"],
+              "path": ["scrapers", "control", "start"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+[
+  {
+    "_id": "699sku123def456789012345",
+    "name": "Pokemon TCG: Mega Evolution - Ascended Heroes Booster Bundle",
+    "sku": "196214141506",
+    "category": "Booster Bundles",
+    "description": "Premium Pokemon Trading Card Game booster bundle with rare cards",
+    "targetPrice": 77.93,
+    "maxPrice": 90,
+    "monitoredWebsites": [
+      "walmart"
+    ],
+    "isActive": true,
+    "createdBy": "699abc123def456789012346",
+    "createdAt": "2026-02-13T10:45:00.000Z",
+    "updatedAt": "2026-02-13T10:45:00.000Z"
+  },
+  {
+    "name": "Pokemon TCG: Mega Evolution - Ascended Heroes Booster Bundle",
+    "sku": "196214141506",
+    "description": "adsadsad",
+    "targetPrice": 85.75,
+    "maxPrice": 80,
+    "imageUrl": "",
+    "websites": [
+      {
+        "name": "walmart",
+        "url": "https://www.walmart.com"
+      }
+    ],
+    "isActive": false,
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "status": "active",
+    "priority": "medium",
+    "_id": "699466a391d9868842476ae2",
+    "createdAt": "2026-02-17T13:01:23.060Z",
+    "updatedAt": "2026-02-17T16:35:05.576Z"
+  },
+  {
+    "name": "Pokémon TCG: Pokémon 30th Celebration Double Deck Box",
+    "sku": "10-10606-101",
+    "description": "cczczczx",
+    "targetPrice": 14,
+    "maxPrice": 16,
+    "imageUrl": "",
+    "websites": [
+      {
+        "name": "pokemoncenter",
+        "url": "https://www.pokemoncenter.com"
+      }
+    ],
+    "isActive": false,
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "status": "active",
+    "priority": "medium",
+    "_id": "69947e1ed76fbaca8f202c20",
+    "createdAt": "2026-02-17T14:41:34.374Z",
+    "updatedAt": "2026-02-17T16:35:12.255Z"
+  },
+  {
+    "name": "Pokémon TCG: Great Wave Pikachu & Friends Double Deck Box",
+    "sku": "10-10310-101",
+    "description": "sasdadas",
+    "targetPrice": 13,
+    "maxPrice": 15,
+    "imageUrl": "",
+    "websites": [
+      {
+        "name": "pokemoncenter",
+        "url": "https://www.pokemoncenter.com"
+      }
+    ],
+    "isActive": false,
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "status": "active",
+    "priority": "medium",
+    "_id": "699499bfe6a1fd3807c03619",
+    "createdAt": "2026-02-17T16:39:27.060Z",
+    "updatedAt": "2026-02-17T16:45:08.281Z"
+  },
+  {
+    "name": "Pokémon TCG: Pokémon 30th Celebration Card Sleeves (65 Sleeves)",
+    "sku": "10-10608-101",
+    "description": "",
+    "targetPrice": 7,
+    "maxPrice": 9,
+    "imageUrl": "",
+    "websites": [
+      {
+        "name": "pokemoncenter",
+        "url": "https://www.pokemoncenter.com"
+      },
+      {
+        "name": "walmart",
+        "url": "https://www.walmart.com"
+      }
+    ],
+    "isActive": false,
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "status": "active",
+    "priority": "medium",
+    "_id": "69949b48e6a1fd3807c0361d",
+    "createdAt": "2026-02-17T16:46:00.047Z",
+    "updatedAt": "2026-02-17T17:43:09.391Z"
+  },
+  {
+    "name": "Pokémon TCG: Paldea Pokémon Trainers Card Sleeves (65 Sleeves)",
+    "sku": "10-10088-101",
+    "description": "",
+    "targetPrice": 6,
+    "maxPrice": 8.99,
+    "imageUrl": "",
+    "websites": [
+      {
+        "name": "pokemoncenter",
+        "url": "https://www.pokemoncenter.com"
+      }
+    ],
+    "isActive": false,
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "status": "active",
+    "priority": "medium",
+    "_id": "6994a8de510564068c1b5161",
+    "createdAt": "2026-02-17T17:43:58.502Z",
+    "updatedAt": "2026-02-19T11:39:23.884Z"
+  },
+  {
+    "name": "Pokémon TCG: Spheal Appeal Card Sleeves (65 Sleeves)",
+    "sku": "10-10304-101",
+    "description": "",
+    "targetPrice": 6,
+    "maxPrice": 9,
+    "imageUrl": "",
+    "websites": [
+      {
+        "name": "pokemoncenter",
+        "url": "https://www.pokemoncenter.com"
+      }
+    ],
+    "isActive": true,
+    "createdBy": "698de9652d08a3b5f0dfebb0",
+    "status": "active",
+    "priority": "medium",
+    "_id": "6996f6d54a1003da24d3de0b",
+    "createdAt": "2026-02-19T11:41:09.268Z",
+    "updatedAt": "2026-02-19T11:41:09.268Z"
+  }
+]
