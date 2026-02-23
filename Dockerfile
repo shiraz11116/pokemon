@@ -17,23 +17,31 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 # Create app directory
 WORKDIR /usr/src/app
 
-# Copy package files (backend)
-COPY package*.json ./
-
-# Install backend dependencies
-RUN npm install --only=production
-
-# Copy frontend package files
-COPY pokemon-dashboard/package*.json ./pokemon-dashboard/
-
-# Install frontend dependencies
-RUN cd pokemon-dashboard && npm install
-
-# Copy app source code
+# Copy all source code first
 COPY . .
 
-# Build React frontend for production 
-RUN cd pokemon-dashboard && npm run build
+# Install backend dependencies (full install for build tools)
+RUN npm install
+
+# Install frontend dependencies and build React app
+WORKDIR /usr/src/app/pokemon-dashboard
+RUN npm install
+RUN echo "Building React production app..." && \
+    npm run build && \
+    echo "Build completed. Checking build folder..." && \
+    ls -la build/ && \
+    echo "Build files created successfully!"
+
+# Go back to main app directory
+WORKDIR /usr/src/app
+
+# Verify the build exists in the correct location
+RUN echo "Verifying build location..." && \
+    ls -la pokemon-dashboard/build/ && \
+    echo "Found build files at pokemon-dashboard/build/"
+
+# Clean up after build (keep only production dependencies for backend)
+RUN npm prune --production
 
 # Create non-root user for security
 RUN addgroup -g 1001 -S nodejs && \

@@ -12,7 +12,6 @@ logs
 .env.local
 .env.development.local
 .env.test.local
-.env.production.local
 .DS_Store
 .vscode
 .git
@@ -20,6 +19,5 @@ logs
 README.md
 *.md
 pokemon-dashboard/node_modules
-pokemon-dashboard/build
 pokemon-dashboard/.eslintcache
 data/testPurchases.json
