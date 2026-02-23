@@ -6,14 +6,13 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "echo 'Build completed for production'",
+    "build": "npm run install:client && npm run build:client",
     "build:client": "cd pokemon-dashboard && npm run build",
     "install:client": "cd pokemon-dashboard && npm install",
     "install:all": "npm install && npm run install:client",
     "scraper": "node src/scrapers/scraperManager.js",
     "purchaser": "node src/purchaser/purchaserManager.js",
-    "test": "jest",
-    "railway:build": "npm install && echo 'Railway build completed'"
+    "test": "jest"
   },
   "engines": {
     "node": ">=20.0.0",

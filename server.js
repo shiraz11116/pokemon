@@ -58,7 +58,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(limiter);
 
 // Serve static files from React build
-app.use(express.static('client/build'));
+app.use(express.static('pokemon-dashboard/build'));
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -76,7 +76,7 @@ app.get('/api/health', (req, res) => {
 const path = require('path');
 const fs = require('fs');
 
-const buildPath = path.join(__dirname, 'client', 'build', 'index.html');
+const buildPath = path.join(__dirname, 'pokemon-dashboard', 'build', 'index.html');
 if (fs.existsSync(buildPath)) {
   app.get('*', (req, res) => {
     res.sendFile(buildPath);
