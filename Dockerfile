@@ -25,20 +25,40 @@ RUN npm install
 
 # Install frontend dependencies and build React app
 WORKDIR /usr/src/app/pokemon-dashboard
-RUN npm install
+
+# Ensure package files exist
+RUN echo "Verifying frontend package files..." && ls -la package*
+
+# Install React dependencies
+RUN echo "Installing React dependencies..." && \
+    npm install && \
+    echo "Frontend dependencies installed successfully!"
+
+# Set production environment for React build
+ENV NODE_ENV=production
+
+# Build React app with verbose output
 RUN echo "Building React production app..." && \
-    npm run build && \
-    echo "Build completed. Checking build folder..." && \
+    npm run build 2>&1 && \
+    echo "React build completed. Verifying build output..." && \
     ls -la build/ && \
-    echo "Build files created successfully!"
+    echo "Build files:" && \
+    find build -type f -name "*.js" -o -name "*.css" -o -name "*.html" | head -10 && \
+    echo "React build verification complete!"
+
+# Verify critical files exist
+RUN test -f build/index.html || (echo "ERROR: index.html not found!" && exit 1)
+RUN test -d build/static || (echo "ERROR: static directory not found!" && exit 1)
 
 # Go back to main app directory
 WORKDIR /usr/src/app
 
 # Verify the build exists in the correct location
-RUN echo "Verifying build location..." && \
+RUN echo "Final verification from main directory..." && \
+    ls -la pokemon-dashboard/ && \
+    echo "Checking build folder from main directory..." && \
     ls -la pokemon-dashboard/build/ && \
-    echo "Found build files at pokemon-dashboard/build/"
+    echo "React build successfully created and verified!"
 
 # Clean up after build (keep only production dependencies for backend)
 RUN npm prune --production

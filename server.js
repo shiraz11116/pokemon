@@ -37,6 +37,9 @@ const AutomatedPurchaseBot = require('./src/purchaser/automatedPurchaseBot');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust proxy for Railway deployment
+app.set('trust proxy', true);
+
 // Initialize test data function
 const initializeTestData = () => {
   testStorage.initializePersistentData();
@@ -55,7 +58,11 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
-app.use(limiter);
+
+// Only use rate limiter in production to avoid Railway proxy issues
+if (process.env.NODE_ENV === 'production') {
+  app.use(limiter);
+}
 
 // Serve static files from React build
 app.use(express.static('pokemon-dashboard/build'));
@@ -77,13 +84,39 @@ const path = require('path');
 const fs = require('fs');
 
 const buildPath = path.join(__dirname, 'pokemon-dashboard', 'build', 'index.html');
+const buildDir = path.join(__dirname, 'pokemon-dashboard', 'build');
+
+logger.info('🔍 Checking for React build...');
+logger.info(`Build directory: ${buildDir}`);
+logger.info(`Build file: ${buildPath}`);
+
 if (fs.existsSync(buildPath)) {
+  logger.info('✅ React build found! Serving React app for non-API routes.');
+  logger.info(`📁 Build files: ${fs.readdirSync(buildDir).join(', ')}`);
   app.get('*', (req, res) => {
+    logger.info(`📄 Serving React app for: ${req.path}`);
     res.sendFile(buildPath);
   });
 } else {
+  logger.error('❌ React build not found! Serving API-only mode.');
+  logger.error('🔍 Available directories:');
+  try {
+    const dashboardDir = path.join(__dirname, 'pokemon-dashboard');
+    if (fs.existsSync(dashboardDir)) {
+      logger.error(`📁 pokemon-dashboard contents: ${fs.readdirSync(dashboardDir).join(', ')}`);
+    } else {
+      logger.error('❌ pokemon-dashboard directory not found!');
+    }
+  } catch (error) {
+    logger.error(`Directory check error: ${error.message}`);
+  }
+  
   app.get('*', (req, res) => {
-    res.json({ message: 'Pokemon Card Auto-Purchase System API', status: 'running' });
+    res.json({ 
+      message: 'Pokemon Card Auto-Purchase System API', 
+      status: 'running',
+      note: 'React dashboard not available - build folder missing'
+    });
   });
 }
 
