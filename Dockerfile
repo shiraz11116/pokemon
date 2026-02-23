@@ -1,5 +1,5 @@
-# Use Node.js 18 Alpine image
-FROM node:18-alpine
+# Use Node.js 20 Alpine image (Railway compatibility)
+FROM node:20-alpine
 
 # Install necessary packages for Puppeteer
 RUN apk add --no-cache \
@@ -17,14 +17,23 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 # Create app directory
 WORKDIR /usr/src/app
 
-# Copy package files
+# Copy package files (backend)
 COPY package*.json ./
 
-# Install dependencies
+# Install backend dependencies
 RUN npm install --only=production
 
-# Copy app source
+# Copy frontend package files
+COPY pokemon-dashboard/package*.json ./pokemon-dashboard/
+
+# Install frontend dependencies
+RUN cd pokemon-dashboard && npm install
+
+# Copy app source code
 COPY . .
+
+# Build React frontend for production 
+RUN cd pokemon-dashboard && npm run build
 
 # Create non-root user for security
 RUN addgroup -g 1001 -S nodejs && \
@@ -34,8 +43,8 @@ RUN addgroup -g 1001 -S nodejs && \
 RUN chown -R nextjs:nodejs /usr/src/app
 USER nextjs
 
-# Expose port
-EXPOSE 5000
+# Expose port (Railway uses PORT env variable)
+EXPOSE $PORT
 
 # Start application
 CMD ["npm", "start"]
