@@ -1,4 +1,4 @@
-# Use Node.js 20 Alpine image (Railway compatibility)
+# Use Node.js 20 Alpine image (Railway compatibility - Force rebuild)
 FROM node:20-alpine
 
 # Install necessary packages for Puppeteer
@@ -16,6 +16,9 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 
 # Create app directory
 WORKDIR /usr/src/app
+
+# RAILWAY CACHE BUSTER - LATEST BUILD
+RUN echo "Railway Build $(date): Using latest Dockerfile with React build!"
 
 # Copy all source code first
 COPY . .
