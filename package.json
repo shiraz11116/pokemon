@@ -16,8 +16,8 @@
     "railway:build": "npm install && echo 'Railway build completed'"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
   },
   "keywords": ["pokemon", "cards", "automation", "scraping", "purchasing"],
   "author": "Pokemon Card Auto Buyer System",
@@ -33,7 +33,7 @@
     "puppeteer": "^21.1.1",
     "playwright": "^1.37.1",
     "cheerio": "^1.0.0-rc.12",
-    "axios": "^1.5.0",
+    "axios": "^1.6.8",
     "nodemailer": "^6.9.4",
     "crypto-js": "^4.1.1",
     "winston": "^3.10.0",

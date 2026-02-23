@@ -1,3 +1,15 @@
+// Polyfill for File API compatibility (Railway Node.js fix)
+if (typeof File === 'undefined') {
+  global.File = class File {
+    constructor(parts, filename, options = {}) {
+      this.parts = parts;
+      this.name = filename;
+      this.type = options.type || '';
+      this.lastModified = options.lastModified || Date.now();
+    }
+  };
+}
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
