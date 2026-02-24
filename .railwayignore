@@ -1,0 +1,29 @@
+# Force Railway to ignore Docker cache and use Node.js detection
+# This file forces Railway to rebuild from scratch
+
+# Ignore build artifacts that might cause cache issues
+build/
+dist/
+.next/
+out/
+
+# Ignore Docker-related files to force Node.js detection
+Dockerfile*
+.dockerignore
+
+# Force fresh npm installs
+node_modules/
+package-lock.json
+yarn.lock
+
+# Ignore cache directories
+.cache/
+.yarn/
+.npm/
+
+# Ignore log files
+*.log
+logs/
+
+# Railway should detect this as Node.js project instead of Docker
+# This bypasses Docker cache entirely
