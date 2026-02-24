@@ -1,0 +1,21 @@
+# Railway Nixpacks Configuration to handle Puppeteer properly
+[phases.setup]
+nixPkgs = [..., 'google-chrome-stable', 'chromium']
+
+[phases.install]
+cmds = ['npm ci']
+
+[phases.build]
+cmds = [
+  'cd pokemon-dashboard', 
+  'npm install', 
+  'npm run build', 
+  'cd ..'
+]
+
+[start]
+cmd = 'npm start'
+
+[variables]
+PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = 'true'
+PUPPETEER_EXECUTABLE_PATH = '/usr/bin/chromium'
